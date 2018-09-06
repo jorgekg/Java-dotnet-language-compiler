@@ -29,19 +29,46 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+          <Group type="102" attributes="0">
+              <Component id="jpMenu" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jPanel1" pref="868" max="32767" attributes="0"/>
+                  <Component id="jPanel2" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+          <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
+=======
           <Group type="102" alignment="1" attributes="0">
               <Component id="jpMenu" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
           </Group>
+>>>>>>> f2f895cd3229f56861bc6dae18f7a9268cf556ce
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel2" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jpMenu" alignment="0" min="-2" pref="641" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+=======
           <Component id="jpMenu" pref="616" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="240" max="32767" attributes="0"/>
+>>>>>>> f2f895cd3229f56861bc6dae18f7a9268cf556ce
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,6 +79,14 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+<<<<<<< HEAD
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+=======
+>>>>>>> f2f895cd3229f56861bc6dae18f7a9268cf556ce
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[750, 480]"/>
         </Property>
@@ -60,12 +95,20 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+              <EmptySpace min="0" pref="864" max="32767" attributes="0"/>
+=======
               <EmptySpace min="0" pref="868" max="32767" attributes="0"/>
+>>>>>>> f2f895cd3229f56861bc6dae18f7a9268cf556ce
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+              <EmptySpace min="0" pref="476" max="32767" attributes="0"/>
+=======
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+>>>>>>> f2f895cd3229f56861bc6dae18f7a9268cf556ce
           </Group>
         </DimensionLayout>
       </Layout>
@@ -75,18 +118,127 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+<<<<<<< HEAD
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+=======
+>>>>>>> f2f895cd3229f56861bc6dae18f7a9268cf556ce
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[145, 590]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[145, 590]"/>
         </Property>
+<<<<<<< HEAD
+        <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
       </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="btNew" max="32767" attributes="0"/>
+              <Component id="btOpen" alignment="0" pref="141" max="32767" attributes="0"/>
+              <Component id="btSave" alignment="0" max="32767" attributes="0"/>
+              <Component id="btCopy" alignment="0" max="32767" attributes="0"/>
+              <Component id="btPaste" alignment="0" max="32767" attributes="0"/>
+              <Component id="btCut" alignment="0" max="32767" attributes="0"/>
+              <Component id="btCompile" alignment="0" max="32767" attributes="0"/>
+              <Component id="btAbout" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="btNew" min="-2" pref="70" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="btOpen" min="-2" pref="70" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="btSave" min="-2" pref="70" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="btCopy" min="-2" pref="70" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="btPaste" min="-2" pref="70" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="btCut" min="-2" pref="70" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="btCompile" min="-2" pref="70" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="btAbout" min="-2" pref="70" max="-2" attributes="0"/>
+                  <EmptySpace pref="77" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="btNew">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="New [Ctrl+N]"/>
+            <Property name="alignmentY" type="float" value="0.0"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 0, 0, 0]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[29, 20]"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btOpen">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Open [Ctrl+O]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btSave">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Save [Ctrl+S]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btCopy">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Copy [Ctrl+C]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btPaste">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Paste [Ctrl+V]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btCut">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cut [Ctrl+X]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btCompile">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Compile [F9]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btAbout">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="About [F1]"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="jPanel2">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+=======
+>>>>>>> f2f895cd3229f56861bc6dae18f7a9268cf556ce
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+=======
               <EmptySpace min="0" pref="145" max="32767" attributes="0"/>
+>>>>>>> f2f895cd3229f56861bc6dae18f7a9268cf556ce
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -96,5 +248,28 @@
         </DimensionLayout>
       </Layout>
     </Container>
+<<<<<<< HEAD
+    <Container class="javax.swing.JPanel" name="jPanel3">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+=======
+>>>>>>> f2f895cd3229f56861bc6dae18f7a9268cf556ce
   </SubComponents>
 </Form>
