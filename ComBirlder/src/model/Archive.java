@@ -33,6 +33,6 @@ public class Archive implements Serializable{
     }
 
     public String getFileType() {
-        return "txt";
+        return "birl";
     }
 }
