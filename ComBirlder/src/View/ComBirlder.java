@@ -131,7 +131,7 @@ public final class ComBirlder extends JFrame{
         jpMenu.setPreferredSize(new java.awt.Dimension(145, 590));
         jpMenu.setVerifyInputWhenFocusTarget(false);
 
-        btNew.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jorge\\Documents\\compiler_builder\\ComBirlder\\img\\new.PNG")); // NOI18N
+        btNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/new.PNG"))); // NOI18N
         btNew.setText("New [Ctrl+N]");
         btNew.setAlignmentY(0.0F);
         btNew.setFocusable(false);
@@ -143,7 +143,7 @@ public final class ComBirlder extends JFrame{
             }
         });
 
-        btOpen.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jorge\\Documents\\compiler_builder\\ComBirlder\\img\\open.PNG")); // NOI18N
+        btOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/open.PNG"))); // NOI18N
         btOpen.setText("Open [Ctrl+O]");
         btOpen.setFocusable(false);
         btOpen.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +152,7 @@ public final class ComBirlder extends JFrame{
             }
         });
 
-        btSave.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jorge\\Documents\\compiler_builder\\ComBirlder\\img\\save.PNG")); // NOI18N
+        btSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/save.PNG"))); // NOI18N
         btSave.setText("Save [Ctrl+S]");
         btSave.setFocusable(false);
         btSave.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +161,7 @@ public final class ComBirlder extends JFrame{
             }
         });
 
-        btCopy.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jorge\\Documents\\compiler_builder\\ComBirlder\\img\\copy.PNG")); // NOI18N
+        btCopy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/copy.PNG"))); // NOI18N
         btCopy.setText("Copy [Ctrl+C]");
         btCopy.setFocusable(false);
         btCopy.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +170,7 @@ public final class ComBirlder extends JFrame{
             }
         });
 
-        btPaste.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jorge\\Documents\\compiler_builder\\ComBirlder\\img\\past.PNG")); // NOI18N
+        btPaste.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/past.PNG"))); // NOI18N
         btPaste.setText("Paste [Ctrl+V]");
         btPaste.setFocusable(false);
         btPaste.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +179,7 @@ public final class ComBirlder extends JFrame{
             }
         });
 
-        btCut.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jorge\\Documents\\compiler_builder\\ComBirlder\\img\\cut.PNG")); // NOI18N
+        btCut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/cut.PNG"))); // NOI18N
         btCut.setText("Cut [Ctrl+X]");
         btCut.setFocusable(false);
         btCut.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +188,7 @@ public final class ComBirlder extends JFrame{
             }
         });
 
-        btCompile.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jorge\\Documents\\compiler_builder\\ComBirlder\\img\\compiler.png")); // NOI18N
+        btCompile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/compiler.png"))); // NOI18N
         btCompile.setText("Compile [F9]");
         btCompile.setFocusable(false);
         btCompile.addActionListener(new java.awt.event.ActionListener() {
@@ -197,7 +197,7 @@ public final class ComBirlder extends JFrame{
             }
         });
 
-        btAbout.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jorge\\Documents\\compiler_builder\\ComBirlder\\img\\about.png")); // NOI18N
+        btAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/about.png"))); // NOI18N
         btAbout.setText("About [F1]");
         btAbout.setFocusable(false);
         btAbout.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +211,7 @@ public final class ComBirlder extends JFrame{
         jpMenuLayout.setHorizontalGroup(
             jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btOpen, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+            .addComponent(btOpen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btCopy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btPaste, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

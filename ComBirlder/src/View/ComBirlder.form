@@ -85,7 +85,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="btNew" max="32767" attributes="0"/>
-              <Component id="btOpen" alignment="0" pref="141" max="32767" attributes="0"/>
+              <Component id="btOpen" alignment="0" max="32767" attributes="0"/>
               <Component id="btSave" alignment="0" max="32767" attributes="0"/>
               <Component id="btCopy" alignment="0" max="32767" attributes="0"/>
               <Component id="btPaste" alignment="0" max="32767" attributes="0"/>
@@ -121,7 +121,7 @@
         <Component class="javax.swing.JButton" name="btNew">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Jorge\Documents\compiler_builder\ComBirlder\img\new.PNG"/>
+              <Image iconType="3" name="/View/img/new.PNG"/>
             </Property>
             <Property name="text" type="java.lang.String" value="New [Ctrl+N]"/>
             <Property name="alignmentY" type="float" value="0.0"/>
@@ -140,7 +140,7 @@
         <Component class="javax.swing.JButton" name="btOpen">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Jorge\Documents\compiler_builder\ComBirlder\img\open.PNG"/>
+              <Image iconType="3" name="/View/img/open.PNG"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Open [Ctrl+O]"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -152,7 +152,7 @@
         <Component class="javax.swing.JButton" name="btSave">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Jorge\Documents\compiler_builder\ComBirlder\img\save.PNG"/>
+              <Image iconType="3" name="/View/img/save.PNG"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Save [Ctrl+S]"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -164,7 +164,7 @@
         <Component class="javax.swing.JButton" name="btCopy">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Jorge\Documents\compiler_builder\ComBirlder\img\copy.PNG"/>
+              <Image iconType="3" name="/View/img/copy.PNG"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Copy [Ctrl+C]"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -176,7 +176,7 @@
         <Component class="javax.swing.JButton" name="btPaste">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Jorge\Documents\compiler_builder\ComBirlder\img\past.PNG"/>
+              <Image iconType="3" name="/View/img/past.PNG"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Paste [Ctrl+V]"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -188,7 +188,7 @@
         <Component class="javax.swing.JButton" name="btCut">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Jorge\Documents\compiler_builder\ComBirlder\img\cut.PNG"/>
+              <Image iconType="3" name="/View/img/cut.PNG"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cut [Ctrl+X]"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -200,7 +200,7 @@
         <Component class="javax.swing.JButton" name="btCompile">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Jorge\Documents\compiler_builder\ComBirlder\img\compiler.png"/>
+              <Image iconType="3" name="/View/img/compiler.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Compile [F9]"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -212,7 +212,7 @@
         <Component class="javax.swing.JButton" name="btAbout">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Jorge\Documents\compiler_builder\ComBirlder\img\about.png"/>
+              <Image iconType="3" name="/View/img/about.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="About [F1]"/>
             <Property name="focusable" type="boolean" value="false"/>
