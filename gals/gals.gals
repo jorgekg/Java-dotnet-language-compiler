@@ -57,5 +57,5 @@ write		= palavra : "write"
 ">"
 ">="
 
-: {F}
+: [\s \n \t]
 : {linha}
