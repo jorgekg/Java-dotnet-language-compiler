@@ -1,0 +1,61 @@
+#Options
+GenerateScanner = true
+GenerateParser = false
+Language = Java
+ScannerName = Lexico
+ScannerCaseSensitive = true
+ScannerTable = Compact
+Input = Stream
+#RegularDefinitions
+M: [A-Z]
+m: [a-z]
+w: [M,m]
+N: [0-9]
+F: \\s | \\n |\\t
+linha: \\\\(.)*\n
+#Tokens
+palavra		: {m} ( {m} | {M}{m} )*
+id		: _((({m}|{M}({m}|{N}))({m}|{M}{m}|{M}{N}|{N})*({M})?)|{M})
+cnumerica	: {N}+(\.{N}+)?
+ccaractere	: '{F}'
+cliteral		: \"([^\n\"\\])*\"
+
+and		= palavra : "and"
+array		= palavra : "array"
+do		= palavra : "do"
+exit		= palavra : "exit"
+false		= palavra : "false"
+if		= palavra : "if"
+ifFalseDo 	= palavra : "ifFalseDo"
+ifTrueDo 	= palavra : "ifTrueDo"
+literal		= palavra : "literal"
+logical		= palavra : "logical"
+number		= palavra : "number"
+not		= palavra : "not"
+or		= palavra : "or"
+read		= palavra : "read"
+true		= palavra : "true"
+write		= palavra : "write"
+
+":"
+","
+"["
+"]"
+"{"
+"}"
+"("
+")"
+":="
+"+"
+"-"
+"*"
+"/"
+"="
+"!="
+"<"
+"<="
+">"
+">="
+
+: {F}
+: {linha}
