@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/flpns/Documents/NetBeansProjects/compiler_builder/ComBirlder/src/View/ComBirlder.java</file>
+            <file>file:/C:/Users/Jorge/Documents/compiler_builder/ComBirlder/src/controller/ValidationController.java</file>
+            <file>file:/C:/Users/Jorge/Documents/compiler_builder/ComBirlder/src/controller/SaveController.java</file>
+            <file>file:/C:/Users/Jorge/Documents/compiler_builder/ComBirlder/src/View/ComBirlder.java</file>
+            <file>file:/C:/Users/Jorge/Documents/compiler_builder/ComBirlder/src/controller/LexemaController.java</file>
         </group>
     </open-files>
 </project-private>

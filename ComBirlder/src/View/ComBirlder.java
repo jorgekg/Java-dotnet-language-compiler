@@ -1,5 +1,6 @@
 package View;
 
+import controller.LexemaController;
 import controller.OpenController;
 import controller.SaveController;
 import java.awt.event.ActionEvent;
@@ -14,8 +15,8 @@ import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Archive;
 
-public final class ComBirlder extends JFrame{
-    
+public final class ComBirlder extends JFrame {
+
     private Archive archive;
 
     public ComBirlder() {
@@ -24,7 +25,7 @@ public final class ComBirlder extends JFrame{
         this.action.setText("");
         this.initEvents();
     }
-    
+
     private void initEvents() {
         this.keyCrtlN();
         this.keyCrtlO();
@@ -32,7 +33,7 @@ public final class ComBirlder extends JFrame{
         this.keyCrtlF9();
         this.keyCrtlF1();
     }
-    
+
     private void keyCrtlN() {
         Action action = new AbstractAction("doSomething") {
             @Override
@@ -43,9 +44,9 @@ public final class ComBirlder extends JFrame{
         action.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control N"));
         btNew.getActionMap().put("new", action);
         btNew.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-        (KeyStroke) action.getValue(Action.ACCELERATOR_KEY), "new");
+                (KeyStroke) action.getValue(Action.ACCELERATOR_KEY), "new");
     }
-    
+
     private void keyCrtlO() {
         Action action = new AbstractAction("doSomething") {
             @Override
@@ -56,9 +57,9 @@ public final class ComBirlder extends JFrame{
         action.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control O"));
         btNew.getActionMap().put("open", action);
         btNew.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-        (KeyStroke) action.getValue(Action.ACCELERATOR_KEY), "open");
+                (KeyStroke) action.getValue(Action.ACCELERATOR_KEY), "open");
     }
-    
+
     private void keyCrtlS() {
         Action action = new AbstractAction("doSomething") {
             @Override
@@ -69,9 +70,9 @@ public final class ComBirlder extends JFrame{
         action.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control S"));
         btNew.getActionMap().put("save", action);
         btNew.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-        (KeyStroke) action.getValue(Action.ACCELERATOR_KEY), "save");
+                (KeyStroke) action.getValue(Action.ACCELERATOR_KEY), "save");
     }
-    
+
     private void keyCrtlF9() {
         Action action = new AbstractAction("doSomething") {
             @Override
@@ -82,9 +83,9 @@ public final class ComBirlder extends JFrame{
         action.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("F9"));
         btNew.getActionMap().put("compiler", action);
         btNew.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-        (KeyStroke) action.getValue(Action.ACCELERATOR_KEY), "compiler");
+                (KeyStroke) action.getValue(Action.ACCELERATOR_KEY), "compiler");
     }
-    
+
     private void keyCrtlF1() {
         Action action = new AbstractAction("doSomething") {
             @Override
@@ -95,9 +96,9 @@ public final class ComBirlder extends JFrame{
         action.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("F1"));
         btNew.getActionMap().put("about", action);
         btNew.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-        (KeyStroke) action.getValue(Action.ACCELERATOR_KEY), "about");
+                (KeyStroke) action.getValue(Action.ACCELERATOR_KEY), "about");
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -211,7 +212,7 @@ public final class ComBirlder extends JFrame{
         jpMenuLayout.setHorizontalGroup(
             jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btOpen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btOpen, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
             .addComponent(btSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btCopy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btPaste, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -329,12 +330,12 @@ public final class ComBirlder extends JFrame{
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
         SaveController saveController = null;
         if (this.archive != null) {
-            saveController = new SaveController(this.archive.getDir(), 
-                        this.archive.getName(), this.editor.getText());
+            saveController = new SaveController(this.archive.getDir(),
+                    this.archive.getName(), this.editor.getText());
         } else {
             JFileChooser chooser = this.chooser();
             if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-                saveController = new SaveController(chooser.getSelectedFile().getPath(), 
+                saveController = new SaveController(chooser.getSelectedFile().getPath(),
                         chooser.getSelectedFile().getName(), this.editor.getText());
             }
         }
@@ -379,7 +380,12 @@ public final class ComBirlder extends JFrame{
     }//GEN-LAST:event_btCutActionPerformed
 
     private void btCompileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCompileActionPerformed
-        this.action.append("Compilação de programas ainda não implementado!\n");
+        LexemaController lexemaController = new LexemaController();
+        if (lexemaController.lexama(this.editor.getText())) {
+            this.action.append(lexemaController.getLog());
+        } else {
+            this.action.append(lexemaController.getError() + "\n");
+        }
     }//GEN-LAST:event_btCompileActionPerformed
 
     private void btAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAboutActionPerformed
@@ -393,7 +399,7 @@ public final class ComBirlder extends JFrame{
         chooser.setFileFilter(filter);
         return chooser;
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

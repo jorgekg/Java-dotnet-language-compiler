@@ -85,7 +85,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="btNew" max="32767" attributes="0"/>
-              <Component id="btOpen" alignment="0" max="32767" attributes="0"/>
+              <Component id="btOpen" alignment="0" pref="141" max="32767" attributes="0"/>
               <Component id="btSave" alignment="0" max="32767" attributes="0"/>
               <Component id="btCopy" alignment="0" max="32767" attributes="0"/>
               <Component id="btPaste" alignment="0" max="32767" attributes="0"/>
