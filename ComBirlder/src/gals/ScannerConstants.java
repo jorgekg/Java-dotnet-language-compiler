@@ -811,11 +811,11 @@ public interface ScannerConstants
 
     String[] SCANNER_ERROR =
     {
-        "Caractere n�o esperado",
-        "",
+        "símbolo inválido",
+        "Palavra reservada inválida",
         "Erro identificando \"!=\"",
-        "Erro identificando cliteral",
-        "Erro identificando ccaractere",
+        "constante literal inválida ou não finalizada",
+        "constante caractere inválida",
         "",
         "",
         "",
@@ -831,7 +831,7 @@ public interface ScannerConstants
         "",
         "Erro identificando <ignorar>",
         "",
-        "Erro identificando id",
+        "identificador inválido",
         "",
         "",
         "",
@@ -842,7 +842,7 @@ public interface ScannerConstants
         "",
         "",
         "",
-        "Erro identificando <ignorar>",
+        "comentário de linha inválido ou não finalizado",
         "",
         "",
         "Erro identificando palavra",

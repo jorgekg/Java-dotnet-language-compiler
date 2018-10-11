@@ -13,15 +13,18 @@ public class ValidationController {
     
     public void proccess(String text, int position) {
         char[] textChat = text.toCharArray();
+        boolean isFinish = false;
         for(int i = 0; i < textChat.length; i++) {
             if (i <= position && textChat[i] == '\n') {
                 line++;
             }
-            if (validateToken(textChat[i])) {
+            if (validateToken(textChat[i]) && i <= position) {
                 lexema = "";
-            } else if (i <= position){
+            } else if (!isFinish){
+                isFinish = validateToken(textChat[i]);
                 lexema += textChat[i];
-            } else {
+            }
+            if (isFinish) {
                 break;
             }
         }

@@ -1,6 +1,6 @@
 package View;
 
-import controller.LexemaController;
+import controller.BuildingController;
 import controller.OpenController;
 import controller.SaveController;
 import java.awt.event.ActionEvent;
@@ -380,7 +380,7 @@ public final class ComBirlder extends JFrame {
     }//GEN-LAST:event_btCutActionPerformed
 
     private void btCompileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCompileActionPerformed
-        LexemaController lexemaController = new LexemaController();
+        BuildingController lexemaController = new BuildingController();
         if (lexemaController.lexama(this.editor.getText())) {
             this.action.append(lexemaController.getLog());
         } else {
