@@ -806,6 +806,10 @@ public interface ScannerConstants
     String[] SPECIAL_CASES_KEYS =
         {  "and", "array", "do", "exit", "false", "if", "ifFalseDo", "ifTrueDo", "literal", "logical", "not", "number", "or", "read", "true", "write" };
 
+    String[] SPECIAL_CARACTER = 
+        {
+          ":", ",", "[", "]", "(", ")", "{", "}", ":=", "+", "-", "*", "/", "=", "!=", "<", "<=", ">", ">="  
+        };
     int[] SPECIAL_CASES_VALUES =
         {  7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 17, 19, 20, 21, 22 };
 
@@ -837,8 +841,8 @@ public interface ScannerConstants
         "",
         "",
         "",
-        "Erro identificando ccaractere",
-        "Erro identificando cnumerica",
+        "Erro identificando caractere",
+        "Erro identificando numerica",
         "",
         "",
         "",
@@ -846,7 +850,7 @@ public interface ScannerConstants
         "",
         "",
         "Erro identificando palavra",
-        "Erro identificando ccaractere",
+        "Erro identificando caractere",
         "",
         "",
         "",

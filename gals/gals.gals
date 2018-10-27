@@ -1,11 +1,14 @@
 #Options
 GenerateScanner = true
-GenerateParser = false
+GenerateParser = true
 Language = Java
 ScannerName = Lexico
+ParserName = Sintatico
+SemanticName = Semantico
 ScannerCaseSensitive = true
 ScannerTable = Compact
-Input = String
+Input = Stream
+Parser = LL
 #RegularDefinitions
 M: [A-Z]
 m: [a-z]
@@ -59,3 +62,75 @@ write		= palavra : "write"
 
 : [\s \n \t]
 : {linha}
+#NonTerminals
+<program>
+<var_declare>
+<type>
+<simple>
+<array>
+<id_list>
+<id_list1>
+<comands>
+<comands1>
+<comand>
+<var_attrib>
+<col>
+<read>
+<id_read_list>
+<id_read_list1>
+<write>
+<exp_list>
+<exp_list1>
+<select>
+<true>
+<false>
+<cmd_list>
+<while>
+<if>
+<expressao>
+<expressao1>
+<elemento>
+<relacional>
+<relacional1>
+<operador_relacional>
+<aritimetica>
+<aritimetica1>
+<termo>
+<termo1>
+<fator>
+#Grammar
+<program>        ::= <var_declare> "{" <comands> "}" ;
+<var_declare>  	::= î  | <type> ":" <id_list> <var_declare>;
+<id_list>       	::= id <id_list1> ;
+<id_list1>	::= "," id <id_list1> | î;
+<type>          	::= <simple> | <array> ;
+<simple>        	::= number | literal | logical;
+<array>         	::= array "["<simple>"," cnumerica"]" ;
+<comands>       	::= <comand> <comands> | î ;
+<comand>        	::= <var_attrib> | <read> | <write> | <select> | <while> ;
+<var_attrib>    	::= id <col> ":=" <expressao> ;
+<col>            	::= î | "[" <expressao> "]" ; 
+<read>           	::= read "(" <id_read_list> ")" ;
+<id_read_list>  	::= id <col> <id_read_list1> ;
+<id_read_list1> ::=  "," id <col> <id_read_list1> | î ;
+<write>          ::= write "(" <exp_list> ")" ;
+<select>         ::= "(" <expressao> ")" <true> <false> ;
+<true>          	::= ifTrueDo "{" <cmd_list> "}" ;
+<false>         	::= î | ifFalseDo "{" <cmd_list> "}" ;
+<exp_list>      	::= <expressao>  <exp_list1> ;
+<exp_list1>	::= "," <expressao> <exp_list1> | î;
+<cmd_list>  	::= <comands> ;
+<while>          ::= do "{" <cmd_list> <if> <cmd_list> "}" ;
+<if>            	::= if "(" <expressao> ")" exit ;
+<expressao>	::= <elemento> <expressao1> ;
+<expressao1>	::= î | and <elemento> <expressao1> | or <elemento> <expressao1>;
+<elemento>	::= <relacional> | true | false | not <elemento> ;
+<relacional> 	::= <aritimetica> <relacional1> ;
+<relacional1> 	::= <operador_relacional> <aritimetica> | î ;
+<operador_relacional> ::= "=" | "!=" | "<" | "<=" | ">" | ">=" ;
+<aritimetica> 	::=  <termo> <aritimetica1> ;
+<aritimetica1>	::= î | "+" <termo> <aritimetica1> | "-" <termo> <aritimetica1> ;
+<termo> 		::= <fator> <termo1> ;
+<termo1>	::= î | "*" <fator> <termo1> | "/" <fator> <termo1>;
+<fator>		::= id <fator1> | cnumerica | cliteral | ccaractere | "(" <expressao> ")" | "+" <fator> | "-" <fator> ;
+<fator1>	::= "[" <expressao> "]" ;
