@@ -7,7 +7,7 @@ ParserName = Sintatico
 SemanticName = Semantico
 ScannerCaseSensitive = true
 ScannerTable = Compact
-Input = Stream
+Input = String
 Parser = LL
 #RegularDefinitions
 M: [A-Z]
@@ -97,6 +97,7 @@ write		= palavra : "write"
 <aritimetica1>
 <termo>
 <termo1>
+<fator1>
 <fator>
 #Grammar
 <program>        ::= <var_declare> "{" <comands> "}" ;
@@ -133,4 +134,4 @@ write		= palavra : "write"
 <termo> 		::= <fator> <termo1> ;
 <termo1>	::= î | "*" <fator> <termo1> | "/" <fator> <termo1>;
 <fator>		::= id <fator1> | cnumerica | cliteral | ccaractere | "(" <expressao> ")" | "+" <fator> | "-" <fator> ;
-<fator1>	::= "[" <expressao> "]" ;
+<fator1>	::= "[" <expressao> "]" | î  ;

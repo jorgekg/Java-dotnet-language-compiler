@@ -381,7 +381,7 @@ public final class ComBirlder extends JFrame {
 
     private void btCompileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCompileActionPerformed
         BuildingController lexemaController = new BuildingController();
-        if (lexemaController.lexama(this.editor.getText())) {
+        if (lexemaController.lexema(this.editor.getText())) {
             this.action.append(lexemaController.getLog());
         } else {
             this.action.append(lexemaController.getError() + "\n");
