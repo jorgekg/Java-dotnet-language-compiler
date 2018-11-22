@@ -7,7 +7,7 @@ ParserName = Sintatico
 SemanticName = Semantico
 ScannerCaseSensitive = true
 ScannerTable = Compact
-Input = String
+Input = Stream
 Parser = LL
 #RegularDefinitions
 M: [A-Z]
@@ -100,38 +100,39 @@ write		= palavra : "write"
 <fator1>
 <fator>
 #Grammar
-<program>        ::= <var_declare> "{" <comands> "}" ;
-<var_declare>  	::= î  | <type> ":" <id_list> <var_declare>;
+<program>        ::= #15 <var_declare> "{" <comands> "}" #16 ;
+<var_declare>  	::= î  | <type> #101 ":" <id_list>  #103 <var_declare>;
 <id_list>       	::= id <id_list1> ;
-<id_list1>	::= "," id <id_list1> | î;
+<id_list1>	::= #102 "," id <id_list1> | #102 î;
 <type>          	::= <simple> | <array> ;
 <simple>        	::= number | literal | logical;
 <array>         	::= array "["<simple>"," cnumerica"]" ;
 <comands>       	::= <comand> <comands> | î ;
 <comand>        	::= <var_attrib> | <read> | <write> | <select> | <while> ;
-<var_attrib>    	::= id <col> ":=" <expressao> ;
+<var_attrib>    	::= id #102 <col> ":=" <expressao> #106 ;
 <col>            	::= î | "[" <expressao> "]" ; 
-<read>           	::= read "(" <id_read_list> ")" ;
-<id_read_list>  	::= id <col> <id_read_list1> ;
-<id_read_list1> ::=  "," id <col> <id_read_list1> | î ;
+<read>           	::= read "(" <id_read_list> #104 ")" ;
+<id_read_list>  	::= id #102 <col> <id_read_list1> ;
+<id_read_list1> ::=  "," id  #102  <col> <id_read_list1> | î ;
 <write>          ::= write "(" <exp_list> ")" ;
-<select>         ::= "(" <expressao> ")" <true> <false> ;
+<select>         ::= "(" <expressao> #107 ")" <true> <false> #108 ;
 <true>          	::= ifTrueDo "{" <cmd_list> "}" ;
-<false>         	::= î | ifFalseDo "{" <cmd_list> "}" ;
+<false>         	::= î | #109 ifFalseDo "{" <cmd_list> "}" ;
 <exp_list>      	::= <expressao>  <exp_list1> ;
-<exp_list1>	::= "," <expressao> <exp_list1> | î;
+<exp_list1>	::= #14 "," <expressao> <exp_list1> | #14 î;
 <cmd_list>  	::= <comands> ;
-<while>          ::= do "{" <cmd_list> <if> <cmd_list> "}" ;
-<if>            	::= if "(" <expressao> ")" exit ;
+<while>          ::= #110 do "{" <cmd_list> <if> <cmd_list> "}" #112 ;
+<if>            	::= if "(" <expressao> #111 ")" exit ;
 <expressao>	::= <elemento> <expressao1> ;
-<expressao1>	::= î | and <elemento> <expressao1> | or <elemento> <expressao1>;
-<elemento>	::= <relacional> | true | false | not <elemento> ;
+<expressao1>	::= î | and <elemento> #17 <expressao1> | or <elemento> #18 <expressao1>;
+<elemento>	::= <relacional> | true #11 | false #12 | not <elemento> #13;
 <relacional> 	::= <aritimetica> <relacional1> ;
-<relacional1> 	::= <operador_relacional> <aritimetica> | î ;
+<relacional1> 	::= <operador_relacional> #9 <aritimetica> #10 | î ;
 <operador_relacional> ::= "=" | "!=" | "<" | "<=" | ">" | ">=" ;
 <aritimetica> 	::=  <termo> <aritimetica1> ;
-<aritimetica1>	::= î | "+" <termo> <aritimetica1> | "-" <termo> <aritimetica1> ;
+<aritimetica1>	::= î | "+" <termo> #1 <aritimetica1> | "-" <termo> #2 <aritimetica1> ;
 <termo> 		::= <fator> <termo1> ;
-<termo1>	::= î | "*" <fator> <termo1> | "/" <fator> <termo1>;
-<fator>		::= id <fator1> | cnumerica | cliteral | ccaractere | "(" <expressao> ")" | "+" <fator> | "-" <fator> ;
+<termo1>	::= î | "*" <fator> #3 <termo1> | "/" <fator> #4 <termo1>;
+<fator>		::= id #105 <fator1> | cnumerica #6 | cliteral #20 | ccaractere #19 | "(" <expressao> ")" | "+" <fator> #7 | "-" <fator> #8 ;
 <fator1>	::= "[" <expressao> "]" | î  ;
+
