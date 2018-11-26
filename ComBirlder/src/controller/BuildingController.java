@@ -42,6 +42,9 @@ public class BuildingController {
             //Trada erros semânticos
         }
         log = "programa compilado com sucesso \n";
+        for(int i = 0; i < storage.Storage.getInstance().script.size(); i++) {
+            System.out.println(storage.Storage.getInstance().script.get(i));
+        }
         return true;
     }
 

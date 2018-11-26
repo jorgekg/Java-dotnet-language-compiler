@@ -1,5 +1,4 @@
 package gals;
-
 public interface ScannerConstants
 {
     int[] SCANNER_TABLE_INDEXES = 
@@ -803,24 +802,25 @@ public interface ScannerConstants
     int[] SPECIAL_CASES_INDEXES =
         { 0, 0, 0, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16 };
 
-    String[] SPECIAL_CASES_KEYS =
-        {  "and", "array", "do", "exit", "false", "if", "ifFalseDo", "ifTrueDo", "literal", "logical", "not", "number", "or", "read", "true", "write" };
-
-    String[] SPECIAL_CARACTER = 
+        String[] SPECIAL_CARACTER = 
         {
           ":", ",", "[", "]", "(", ")", "{", "}", ":=", "+", "-", "*", "/", "=", "!=", "<", "<=", ">", ">="  
         };
+
     
+    String[] SPECIAL_CASES_KEYS =
+        {  "and", "array", "do", "exit", "false", "if", "ifFalseDo", "ifTrueDo", "literal", "logical", "not", "number", "or", "read", "true", "write" };
+
     int[] SPECIAL_CASES_VALUES =
         {  7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 17, 19, 20, 21, 22 };
 
     String[] SCANNER_ERROR =
     {
-        "símbolo inválido",
-        "Palavra reservada inválida",
+        "simbolo invalido",
+        "Palavra reservada invalida",
         "Erro identificando \"!=\"",
-        "constante literal inválida ou não finalizada",
-        "constante caractere inválida",
+        "constante literal invalida ou nao finalizada",
+        "constante caractere invalida",
         "",
         "",
         "",
@@ -836,7 +836,7 @@ public interface ScannerConstants
         "",
         "Erro identificando <ignorar>",
         "",
-        "identificador inválido",
+        "identificador inv√°lido",
         "",
         "",
         "",
@@ -847,7 +847,7 @@ public interface ScannerConstants
         "",
         "",
         "",
-        "comentário de linha inválido ou não finalizado",
+        "comentario de linha invalido ou naßo finalizado",
         "",
         "",
         "Erro identificando palavra",
