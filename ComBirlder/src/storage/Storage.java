@@ -17,6 +17,9 @@ public class Storage {
     
     public ArrayList<String> script = new ArrayList();
     public ArrayList<String> pilha = new ArrayList();
+    public ArrayList<String> tipovar = new ArrayList();
+    public ArrayList<String> listaid = new ArrayList();
+    public String operador = "";
     
     public static Storage getInstance() {
         if (instance == null) {
