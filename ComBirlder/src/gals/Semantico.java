@@ -97,10 +97,10 @@ public class Semantico implements Constants
                 this.action107();
                 break;
             case 108:
-                
+                this.action108();
                 break;
             case 109:
-                
+                this.action109();
                 break;
             case 110:
                 
@@ -283,7 +283,7 @@ public class Semantico implements Constants
     
     private void action20(Token token) {
         this.pilha.add("string");
-        this.script.add("ldstr \"" + token.getLexeme() + "\"" );
+        this.script.add("ldstr " + token.getLexeme() );
     }
     
     private void action101(Token token) {
@@ -395,7 +395,17 @@ public class Semantico implements Constants
     
     private void action107() {
         this.index.add(this.index.size() + 1);
-        this.script.add("brfalse lable" + this.index.size());
+        this.script.add("brfalse label" + this.index.get(this.index.size() - 1));
+    }
+    
+    private void action108() {
+        this.script.add("label" + this.index.get(this.index.size() - 1) + ":");
+    }
+    
+    private void action109() {
+        this.index.add(this.index.size() + 1);
+        this.script.add("br label" + this.index.get(this.index.size() - 1));
+        this.script.add("label" + this.index.get(this.index.size() - 2) + ":");
     }
     
     private String getTipovar(String id) {
