@@ -20,6 +20,7 @@ public class Storage {
     public ArrayList<String> pilha = new ArrayList();
     public ArrayList<String> listaid = new ArrayList();
     public ArrayList<TabelaSimbolo> ts = new ArrayList();
+    public ArrayList<Integer> index = new ArrayList();
     public String tipovar = "";
     public String operador = "";
     

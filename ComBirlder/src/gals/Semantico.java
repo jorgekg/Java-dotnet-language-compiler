@@ -10,6 +10,7 @@ public class Semantico implements Constants
     private ArrayList<String> pilha = storage.Storage.getInstance().pilha;
     private ArrayList<String> listaid = storage.Storage.getInstance().listaid;
     private ArrayList<TabelaSimbolo> ts = storage.Storage.getInstance().ts;
+    private ArrayList<Integer> index = storage.Storage.getInstance().index;
     private String tipovar = storage.Storage.getInstance().tipovar;
     private String operador = storage.Storage.getInstance().operador;
     
@@ -63,7 +64,13 @@ public class Semantico implements Constants
                 this.action16();
                 break;
             case 17:
-                
+                this.action17();
+                break;
+            case 18:
+                this.action18();
+                break;
+            case 19:
+                this.action19(token);
                 break;
             case 20:
                 this.action20(token);
@@ -76,6 +83,33 @@ public class Semantico implements Constants
                 break;
             case 103:
                 this.action103();
+                break;
+            case 104:
+                this.action104();
+                break;
+            case 105:
+                this.action105(token);
+                break;
+            case 106:
+                this.action106();
+                break;
+            case 107:
+                this.action107();
+                break;
+            case 108:
+                
+                break;
+            case 109:
+                
+                break;
+            case 110:
+                
+                break;
+            case 111:
+                
+                break;
+            case 112:
+                
                 break;
         }
     }	
@@ -199,8 +233,8 @@ public class Semantico implements Constants
     
     private void action15() {
         this.script.add(".assembly extern mscorlib {}");
-        this.script.add(".assembly _codigo_aberto{}");
-        this.script.add(".module _codigo_onjeto.exe");
+        this.script.add(".assembly _codigo_objeto{}");
+        this.script.add(".module _codigo_objeto.exe");
         this.script.add(".class public _UNICA{");
         this.script.add(".method static public void _PRINCIPAL() {");
         this.script.add(".entrypoint");
@@ -210,6 +244,41 @@ public class Semantico implements Constants
         this.script.add("ret");
         this.script.add("}");
         this.script.add("}");
+    }
+    
+    private void action17() throws SemanticError {
+        String tipo1 = this.pop();
+        String tipo2 = this.pop();
+        if (tipo1 != "bool" || tipo2 != "bool") {
+            throw new SemanticError("Tipos incompativeis");
+        }
+        this.script.add("and");
+        this.pilha.add("bool");
+    }
+    
+    private void action18() throws SemanticError {
+        String tipo1 = this.pop();
+        String tipo2 = this.pop();
+        if (tipo1 != "bool" || tipo2 != "bool") {
+            throw new SemanticError("Tipos incompativeis");
+        }
+        this.script.add("or");
+        this.pilha.add("bool");
+    }
+    
+    private void action19(Token token) {
+        this.pilha.add("string");
+        switch (token.getLexeme()) {
+            case "'\\s'":
+                this.script.add("ldstr \" \"");
+                break;
+            case "\\t":
+                this.script.add("ldstr \"\\t\"");
+                break;
+            case "\\n":
+                this.script.add("ldstr \"\\n\"");
+                break;
+        }
     }
     
     private void action20(Token token) {
@@ -237,8 +306,10 @@ public class Semantico implements Constants
     
     private void action103() throws SemanticError {
         for (String id : this.listaid) {
-            if (this.ts.contains(id)) {
-                throw new SemanticError("Erro semantico");
+            for (TabelaSimbolo tbs : this.ts) {
+                if (tbs.getId() == id) {
+                    throw new SemanticError("Tipo incompatível em operação lógica unária");
+                }
             }
             TabelaSimbolo tbs = new TabelaSimbolo();
             tbs.setId(id);
@@ -246,20 +317,90 @@ public class Semantico implements Constants
             this.ts.add(tbs);
             this.script.add(".locals(" + this.tipovar + ", " + id + ")");
         }
+        this.listaid.clear();
     }
     
     private void action104() throws SemanticError {
+        boolean isExistTs = false;
         for (String id : this.listaid) {
-            if (!this.ts.contains(id)) {
-                throw new SemanticError("Erro semantico");
+            for (TabelaSimbolo tbs : this.ts) {
+                if (tbs.getId().equalsIgnoreCase(id)) {
+                    isExistTs = true;
+                }
+            }
+            if (!isExistTs) {
+                throw new SemanticError("Tipo incompatível em operação lógica binária");
             }
             String tipoId = this.getTipovar(id);
+            String classe = tipoId;
+            switch (tipoId) {
+                case "int64": 
+                    classe = "Int64";
+                    break;
+                case "float64": 
+                    classe = "Double";
+                    break;
+                case "bool":
+                    classe = "Boolean";
+                    break;
+            }
+            this.script.add("call string [mscorlib]System.Console::ReadLine()");
+            if (tipoId != "string") {
+                this.script.add("call " + tipoId +
+                        " [mscorlib]System." + classe + "::Parse(string)");
+            }
+            this.script.add("stloc " + id);
         }
+    }
+    
+    private void action105(Token token) throws SemanticError {
+        String id = null;
+        for (TabelaSimbolo tbs : this.ts) {
+            if (tbs.getId().equalsIgnoreCase(token.getLexeme())) {
+                id = token.getLexeme();
+            }
+        }
+        if (id == null) {
+            throw new SemanticError("identificador não declarado");
+        }
+        String tipoid = this.getTipovar(id);
+        this.pilha.add(tipoid);
+        this.script.add("ldloc " + id);
+        if (tipoid == "int64") {
+            this.script.add("conv.r8");
+        }
+    }
+    
+    private void action106() throws SemanticError {
+        String id = this.listaid.remove(this.listaid.size() - 1);
+        String tsId = null;
+        for (TabelaSimbolo tbs : this.ts) {
+            if (tbs.getId().equalsIgnoreCase(id)) {
+                tsId = id;
+            }
+        }
+        if (tsId == null) {
+            throw new SemanticError("identificador não declarado");
+        }
+        String tipoid = this.getTipovar(id);
+        String tipoexp = this.pop();
+        if (tipoexp != tipoid) {
+            throw new SemanticError("tipo incompatível em comando de atribuição");
+        }
+        if (tipoid == "int64") {
+            this.script.add("conv.r8");
+        }
+        this.script.add("ldloc " + id);
+    }
+    
+    private void action107() {
+        this.index.add(this.index.size() + 1);
+        this.script.add("brfalse lable" + this.index.size());
     }
     
     private String getTipovar(String id) {
         for (TabelaSimbolo tbs : this.ts) {
-            if (tbs.getId() == id) {
+            if (tbs.getId().equalsIgnoreCase(id)) {
                 return tbs.getTipovar();
             }
         }
