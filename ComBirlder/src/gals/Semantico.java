@@ -118,7 +118,7 @@ public class Semantico implements Constants
         String tipo1 = this.pop();
         String tipo2 = this.pop();
         if (tipo1 != "float64" || tipo2 != "float64") {
-            throw new SemanticError("Tipos incompativeis");
+            throw new SemanticError("tipos incompatíveis em operação aritmética binária");
         }
         this.script.add("add");
         this.pilha.add("float64");
@@ -128,7 +128,7 @@ public class Semantico implements Constants
         String tipo1 = this.pop();
         String tipo2 = this.pop();
         if (tipo1 != "float64" || tipo2 != "float64") {
-            throw new SemanticError("Tipos incompativeis");
+            throw new SemanticError("tipos incompatíveis em operação aritmética binária");
         }
         this.script.add("sub");
         this.pilha.add("float64");
@@ -138,7 +138,7 @@ public class Semantico implements Constants
         String tipo1 = this.pop();
         String tipo2 = this.pop();
         if (tipo1 != "float64" || tipo2 != "float64") {
-            throw new SemanticError("Tipos incompativeis");
+            throw new SemanticError("tipos incompatíveis em operação aritmética binária");
         }
         this.script.add("mul");
         this.pilha.add("float64");
@@ -148,7 +148,7 @@ public class Semantico implements Constants
         String tipo1 = this.pop();
         String tipo2 = this.pop();
         if (tipo1 != "float64" || tipo2 != "float64") {
-            throw new SemanticError("Tipos incompativeis");
+            throw new SemanticError("tipos incompatíveis em operação aritmética binária");
         }
         this.script.add("div");
         this.pilha.add("float64");
@@ -163,15 +163,15 @@ public class Semantico implements Constants
         String tipo1 = this.pop();
         String tipo2 = this.pop();
         if (tipo1 != "float64" || tipo2 != "float64") {
-            throw new SemanticError("Tipos incompativeis");
+            throw new SemanticError("tipo incompatível em operação aritmética unária");
         }
         this.pilha.add("float64");
     }
     
-    private void action8() {
+    private void action8() throws SemanticError {
         String tipo1 = this.pop();
-        if (tipo1 != "float64") {
-            
+        if (tipo1 != "float64" || tipo1 != "int64") {
+            throw new SemanticError("tipo incompatível em operação aritmética unária");
         }
         this.script.add("ldc.r8 -1");
         this.script.add("mul");
@@ -186,7 +186,7 @@ public class Semantico implements Constants
         String tipo1 = this.pop();
         String tipo2 = this.pop();
         if (tipo1 != "float64") {
-            throw new SemanticError("Tipos incompativeis");
+            throw new SemanticError("tipos incompatíveis em operação relacional");
         }
         this.pilha.add("bool");
         switch(this.operador) {
@@ -213,10 +213,10 @@ public class Semantico implements Constants
         this.script.add("ldc.i4.0");
     }
     
-    private void action13() {
+    private void action13() throws SemanticError {
         String tipo1 = this.pop();
-        if (tipo1 != "bool") {
-            
+        if (!tipo1.equals("bool")) {
+            throw new SemanticError("tipo incompatível em operação lógica unária");
         }
         this.pilha.add("bool");
         this.script.add("ldc.i4.1");
@@ -225,7 +225,7 @@ public class Semantico implements Constants
     
     private void action14() {
         String tipo = this.pop();
-        if (tipo == "int64") {
+        if (tipo.equals("int64")) {
             this.script.add("conv.i8");
         }
         this.script.add("call void [mscorlib]System.Console::Write(" + tipo +")");
@@ -249,8 +249,8 @@ public class Semantico implements Constants
     private void action17() throws SemanticError {
         String tipo1 = this.pop();
         String tipo2 = this.pop();
-        if (tipo1 != "bool" || tipo2 != "bool") {
-            throw new SemanticError("Tipos incompativeis");
+        if (!tipo1.equals("bool") || !tipo2.equals("bool")) {
+            throw new SemanticError("tipos incompatíveis em operação lógica binária");
         }
         this.script.add("and");
         this.pilha.add("bool");
@@ -259,8 +259,8 @@ public class Semantico implements Constants
     private void action18() throws SemanticError {
         String tipo1 = this.pop();
         String tipo2 = this.pop();
-        if (tipo1 != "bool" || tipo2 != "bool") {
-            throw new SemanticError("Tipos incompativeis");
+        if (!tipo1.equals("bool") || !tipo2.equals("bool")) {
+            throw new SemanticError("tipos incompatíveis em operação lógica binária");
         }
         this.script.add("or");
         this.pilha.add("bool");
@@ -307,7 +307,7 @@ public class Semantico implements Constants
     private void action103() throws SemanticError {
         for (String id : this.listaid) {
             for (TabelaSimbolo tbs : this.ts) {
-                if (tbs.getId() == id) {
+                if (tbs.getId().equals(id)) {
                     throw new SemanticError("Tipo incompatível em operação lógica unária");
                 }
             }
@@ -329,7 +329,7 @@ public class Semantico implements Constants
                 }
             }
             if (!isExistTs) {
-                throw new SemanticError("Tipo incompatível em operação lógica binária");
+                throw new SemanticError("identificador não declarado");
             }
             String tipoId = this.getTipovar(id);
             String classe = tipoId;
@@ -345,7 +345,7 @@ public class Semantico implements Constants
                     break;
             }
             this.script.add("call string [mscorlib]System.Console::ReadLine()");
-            if (tipoId != "string") {
+            if (!tipoId.equals("string")) {
                 this.script.add("call " + tipoId +
                         " [mscorlib]System." + classe + "::Parse(string)");
             }
@@ -366,7 +366,7 @@ public class Semantico implements Constants
         String tipoid = this.getTipovar(id);
         this.pilha.add(tipoid);
         this.script.add("ldloc " + id);
-        if (tipoid == "int64") {
+        if (tipoid.equals("int64")) {
             this.script.add("conv.r8");
         }
     }
@@ -384,10 +384,10 @@ public class Semantico implements Constants
         }
         String tipoid = this.getTipovar(id);
         String tipoexp = this.pop();
-        if (tipoexp != tipoid) {
+        if (!tipoexp.equals(tipoid)) {
             throw new SemanticError("tipo incompatível em comando de atribuição");
         }
-        if (tipoid == "int64") {
+        if (tipoid.equals("int64")) {
             this.script.add("conv.r8");
         }
         this.script.add("ldloc " + id);
