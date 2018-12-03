@@ -39,6 +39,7 @@ public class BuildingController {
                     + " " + e.getLocalizedMessage();
             return false;
         } catch (SemanticError e) {
+            storage.Storage.getInstance().clear();
             error = e.getMessage();
             return false;
         }
@@ -46,6 +47,7 @@ public class BuildingController {
         for(int i = 0; i < storage.Storage.getInstance().script.size(); i++) {
             System.out.println(storage.Storage.getInstance().script.get(i));
         }
+        storage.Storage.getInstance().clear();
         return true;
     }
 

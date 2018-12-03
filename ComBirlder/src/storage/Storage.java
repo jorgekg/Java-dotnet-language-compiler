@@ -31,4 +31,8 @@ public class Storage {
         return instance;
     }
     
+    public void clear() {
+        Storage.instance = new Storage();
+    }
+    
 }
