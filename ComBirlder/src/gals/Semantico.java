@@ -103,13 +103,13 @@ public class Semantico implements Constants
                 this.action109();
                 break;
             case 110:
-                
+                this.action110();
                 break;
             case 111:
-                
+                this.action111();
                 break;
             case 112:
-                
+                this.action112();
                 break;
         }
     }	
@@ -406,6 +406,21 @@ public class Semantico implements Constants
         this.index.add(this.index.size() + 1);
         this.script.add("br label" + this.index.get(this.index.size() - 1));
         this.script.add("label" + this.index.get(this.index.size() - 2) + ":");
+    }
+    
+    private void action110() {
+        this.index.add(this.index.size() + 1);
+        this.script.add("label" + this.index.get(this.index.size() - 1));
+    }
+    
+    private void action111() {
+        this.index.add(this.index.size() + 1);
+        this.script.add("brtrue label" + this.index.get(this.index.size() - 1) + ":");
+    }
+    
+    private void action112() {
+        this.script.add("br label" + this.index.get(this.index.size() - 2));
+        this.script.add("label" + this.index.get(this.index.size() - 1) + ":");
     }
     
     private String getTipovar(String id) {
