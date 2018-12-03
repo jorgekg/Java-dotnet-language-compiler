@@ -1,14 +1,16 @@
 package gals;
 
 import java.util.ArrayList;
+import model.TabelaSimbolo;
 
 public class Semantico implements Constants
 {
     
     private ArrayList<String> script = storage.Storage.getInstance().script;
     private ArrayList<String> pilha = storage.Storage.getInstance().pilha;
-    private ArrayList<String> tipovar = storage.Storage.getInstance().tipovar;
     private ArrayList<String> listaid = storage.Storage.getInstance().listaid;
+    private ArrayList<TabelaSimbolo> ts = storage.Storage.getInstance().ts;
+    private String tipovar = storage.Storage.getInstance().tipovar;
     private String operador = storage.Storage.getInstance().operador;
     
     public void executeAction(int action, Token token)	throws SemanticError
@@ -60,50 +62,59 @@ public class Semantico implements Constants
             case 16:
                 this.action16();
                 break;
+            case 17:
+                
+                break;
             case 20:
                 this.action20(token);
                 break;
             case 101:
-                
+                this.action101(token);
+                break;
+            case 102:
+                this.action102(token);
+                break;
+            case 103:
+                this.action103();
                 break;
         }
     }	
     
-    private void action1() {
+    private void action1() throws SemanticError {
         String tipo1 = this.pop();
         String tipo2 = this.pop();
         if (tipo1 != "float64" || tipo2 != "float64") {
-            System.out.println("tipo incompativel ");
+            throw new SemanticError("Tipos incompativeis");
         }
         this.script.add("add");
         this.pilha.add("float64");
     }
     
-    private void action2() {
+    private void action2() throws SemanticError {
         String tipo1 = this.pop();
         String tipo2 = this.pop();
         if (tipo1 != "float64" || tipo2 != "float64") {
-            System.out.println("tipo incompativel ");
+            throw new SemanticError("Tipos incompativeis");
         }
         this.script.add("sub");
         this.pilha.add("float64");
     }
     
-    private void action3() {
+    private void action3() throws SemanticError {
         String tipo1 = this.pop();
         String tipo2 = this.pop();
         if (tipo1 != "float64" || tipo2 != "float64") {
-            System.out.println("tipo incompativel ");
+            throw new SemanticError("Tipos incompativeis");
         }
         this.script.add("mul");
         this.pilha.add("float64");
     }
     
-    private void action4() {
+    private void action4() throws SemanticError {
         String tipo1 = this.pop();
         String tipo2 = this.pop();
         if (tipo1 != "float64" || tipo2 != "float64") {
-            System.out.println("tipo incompativel ");
+            throw new SemanticError("Tipos incompativeis");
         }
         this.script.add("div");
         this.pilha.add("float64");
@@ -114,11 +125,11 @@ public class Semantico implements Constants
         this.pilha.add("float64");
     }
     
-    private void action7() {
+    private void action7() throws SemanticError {
         String tipo1 = this.pop();
         String tipo2 = this.pop();
         if (tipo1 != "float64" || tipo2 != "float64") {
-            System.out.println("tipo incompativel ");
+            throw new SemanticError("Tipos incompativeis");
         }
         this.pilha.add("float64");
     }
@@ -137,11 +148,11 @@ public class Semantico implements Constants
         this.operador += operador.getLexeme();
     }
     
-    private void action10() {
+    private void action10() throws SemanticError {
         String tipo1 = this.pop();
         String tipo2 = this.pop();
         if (tipo1 != "float64") {
-            System.out.println("tipo incompativel ");
+            throw new SemanticError("Tipos incompativeis");
         }
         this.pilha.add("bool");
         switch(this.operador) {
@@ -209,19 +220,50 @@ public class Semantico implements Constants
     private void action101(Token token) {
         switch(token.getLexeme()) {
             case "number":
-                this.tipovar.add("float64");
+                this.tipovar = ("float64");
                 break;
             case "literal":
-                this.tipovar.add("string");
+                this.tipovar = ("string");
                 break;
             case "logical":
-                this.tipovar.add("bool");
+                this.tipovar = ("bool");
                 break;
         }
     }
     
     private void action102(Token token) {
         this.listaid.add(token.getLexeme());
+    }
+    
+    private void action103() throws SemanticError {
+        for (String id : this.listaid) {
+            if (this.ts.contains(id)) {
+                throw new SemanticError("Erro semantico");
+            }
+            TabelaSimbolo tbs = new TabelaSimbolo();
+            tbs.setId(id);
+            tbs.setTipovar(this.tipovar);
+            this.ts.add(tbs);
+            this.script.add(".locals(" + this.tipovar + ", " + id + ")");
+        }
+    }
+    
+    private void action104() throws SemanticError {
+        for (String id : this.listaid) {
+            if (!this.ts.contains(id)) {
+                throw new SemanticError("Erro semantico");
+            }
+            String tipoId = this.getTipovar(id);
+        }
+    }
+    
+    private String getTipovar(String id) {
+        for (TabelaSimbolo tbs : this.ts) {
+            if (tbs.getId() == id) {
+                return tbs.getTipovar();
+            }
+        }
+        return null;
     }
     
     private String pop() {

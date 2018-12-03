@@ -6,6 +6,7 @@
 package storage;
 
 import java.util.ArrayList;
+import model.TabelaSimbolo;
 
 /**
  *
@@ -17,8 +18,9 @@ public class Storage {
     
     public ArrayList<String> script = new ArrayList();
     public ArrayList<String> pilha = new ArrayList();
-    public ArrayList<String> tipovar = new ArrayList();
     public ArrayList<String> listaid = new ArrayList();
+    public ArrayList<TabelaSimbolo> ts = new ArrayList();
+    public String tipovar = "";
     public String operador = "";
     
     public static Storage getInstance() {

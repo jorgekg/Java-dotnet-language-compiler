@@ -39,35 +39,13 @@ public class BuildingController {
                     + " " + e.getLocalizedMessage();
             return false;
         } catch (SemanticError e) {
-            //Trada erros semânticos
+            error = e.getMessage();
+            return false;
         }
         log = "programa compilado com sucesso \n";
         for(int i = 0; i < storage.Storage.getInstance().script.size(); i++) {
             System.out.println(storage.Storage.getInstance().script.get(i));
         }
-        return true;
-    }
-
-    public boolean lexama_old(String code) {
-        Lexico lexico = new Lexico(code);
-        Token tken = null;
-        log += "linha     classe               lexema \n";
-        ValidationController scannerController = new ValidationController();
-        try {
-            while ((tken = lexico.nextToken()) != null) {
-                if (tken.getId() == 2) {
-                    throw new LexicalError(ScannerConstants.SCANNER_ERROR[1], tken.getPosition());
-                }
-                scannerController.proccess(code, tken.getPosition());
-                log += "" + scannerController.getLine() + "         "
-                        + getClassLexema(tken.getLexeme())
-                        + "    " + tken.getLexeme() + "\n";
-                scannerController.setLine(1);
-            }
-        } catch (LexicalError e) {
-            
-        }
-        log += "programa compilado com sucesso \n";
         return true;
     }
 
