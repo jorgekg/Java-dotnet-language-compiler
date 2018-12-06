@@ -5,6 +5,9 @@ import controller.OpenController;
 import controller.SaveController;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JComponent;
@@ -381,10 +384,14 @@ public final class ComBirlder extends JFrame {
 
     private void btCompileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCompileActionPerformed
         BuildingController lexemaController = new BuildingController();
-        if (lexemaController.lexema(this.editor.getText())) {
-            this.action.append(lexemaController.getLog());
-        } else {
-            this.action.append(lexemaController.getError() + "\n");
+        try {
+            if (lexemaController.lexema(this.editor.getText(), this.archive)) {
+                this.action.append(lexemaController.getLog());
+            } else {
+                this.action.append(lexemaController.getError() + "\n");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ComBirlder.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btCompileActionPerformed
 

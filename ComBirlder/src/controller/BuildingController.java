@@ -1,6 +1,5 @@
 package controller;
 
-import gals.Token;
 import gals.Lexico;
 import gals.LexicalError;
 import gals.ScannerConstants;
@@ -8,6 +7,11 @@ import gals.SemanticError;
 import gals.Semantico;
 import gals.Sintatico;
 import gals.SyntaticError;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import model.Archive;
 
 public class BuildingController {
 
@@ -18,7 +22,7 @@ public class BuildingController {
         log = "";
     }
 
-    public boolean lexema(String code) {
+    public boolean lexema(String code, Archive archive) throws IOException {
         Lexico lexico = new Lexico();
         Sintatico sintatico = new Sintatico();
         Semantico semantico = new Semantico();
@@ -44,9 +48,14 @@ public class BuildingController {
             return false;
         }
         log = "programa compilado com sucesso \n";
-        for(int i = 0; i < storage.Storage.getInstance().script.size(); i++) {
-            System.out.println(storage.Storage.getInstance().script.get(i));
+        File birldFile = new File(archive.getDir() + ".il");
+        try (BufferedWriter bufferWriter = new BufferedWriter(new FileWriter(birldFile))) {
+            for(int i = 0; i < storage.Storage.getInstance().script.size(); i++) {
+                bufferWriter.write(storage.Storage.getInstance().script.get(i));
+                bufferWriter.newLine();
+            }
         }
+        
         storage.Storage.getInstance().clear();
         return true;
     }
