@@ -13,6 +13,7 @@ public class Semantico implements Constants
     private ArrayList<Integer> index = storage.Storage.getInstance().index;
     private String tipovar = storage.Storage.getInstance().tipovar;
     private String operador = storage.Storage.getInstance().operador;
+    private Integer ultimoExecutado = storage.Storage.getInstance().ultimoExecutado;
     
     public void executeAction(int action, Token token)	throws SemanticError
     {
@@ -111,6 +112,7 @@ public class Semantico implements Constants
                 this.action112();
                 break;
         }
+        storage.Storage.getInstance().ultimoExecutado = action;
     }	
     
     private void action1() throws SemanticError {
@@ -190,7 +192,7 @@ public class Semantico implements Constants
         this.pilha.add("bool");
         switch(this.operador) {
             case ">":
-                this.script.add("ctg");
+                this.script.add("cgt");
                 break;
             case "<":
                 this.script.add("clt");
@@ -271,10 +273,10 @@ public class Semantico implements Constants
             case "'\\s'":
                 this.script.add("ldstr \" \"");
                 break;
-            case "\\t":
+            case "'\\t'":
                 this.script.add("ldstr \"\\t\"");
                 break;
-            case "\\n":
+            case "'\\n'":
                 this.script.add("ldstr \"\\n\"");
                 break;
         }
@@ -314,7 +316,7 @@ public class Semantico implements Constants
             tbs.setId(id);
             tbs.setTipovar(this.tipovar);
             this.ts.add(tbs);
-            this.script.add(".locals(" + this.tipovar + ", " + id + ")");
+            this.script.add(".locals(" + this.tipovar + " " + id + ")");
         }
         this.listaid.clear();
     }
@@ -389,7 +391,7 @@ public class Semantico implements Constants
         if (tipoid.equals("int64")) {
             this.script.add("conv.r8");
         }
-        this.script.add("ldloc " + id);
+        this.script.add("stloc " + id);
     }
     
     private void action107() {
@@ -398,7 +400,11 @@ public class Semantico implements Constants
     }
     
     private void action108() {
+        if (storage.Storage.getInstance().ultimoExecutado == 108) {
+            this.index.remove(this.index.size() - 1);
+        }
         this.script.add("label" + this.index.get(this.index.size() - 1) + ":");
+        this.index.remove(this.index.size() - 1);     
     }
     
     private void action109() {
@@ -409,12 +415,12 @@ public class Semantico implements Constants
     
     private void action110() {
         this.index.add(this.index.size() + 1);
-        this.script.add("label" + this.index.get(this.index.size() - 1));
+        this.script.add("label" + this.index.get(this.index.size() - 1) + ":");
     }
     
     private void action111() {
         this.index.add(this.index.size() + 1);
-        this.script.add("brtrue label" + this.index.get(this.index.size() - 1) + ":");
+        this.script.add("brtrue label" + this.index.get(this.index.size() - 1));
     }
     
     private void action112() {

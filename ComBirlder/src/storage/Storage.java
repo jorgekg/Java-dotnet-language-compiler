@@ -23,6 +23,7 @@ public class Storage {
     public ArrayList<Integer> index = new ArrayList();
     public String tipovar = "";
     public String operador = "";
+    public Integer ultimoExecutado = -1;
     
     public static Storage getInstance() {
         if (instance == null) {
